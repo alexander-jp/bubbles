@@ -56,7 +56,7 @@ public class BubblesService extends Service {
 
     private WindowManager getWindowManager() {
         if (windowManager == null) {
-            windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+            windowManager = (WindowManager)getSystemService(WINDOW_SERVICE);
         }
         return windowManager;
     }
@@ -116,6 +116,7 @@ public class BubblesService extends Service {
                     WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                     PixelFormat.TRANSPARENT);
         }
+
         params.gravity = Gravity.TOP | Gravity.START;
         params.x = x;
         params.y = y;
@@ -123,7 +124,6 @@ public class BubblesService extends Service {
     }
 
     private WindowManager.LayoutParams buildLayoutParamsForTrash() {
-
         int x = 0;
         int y = 0;
 
@@ -132,16 +132,16 @@ public class BubblesService extends Service {
                     WindowManager.LayoutParams.MATCH_PARENT,
                     WindowManager.LayoutParams.MATCH_PARENT,
                     WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                    PixelFormat.TRANSPARENT);
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    PixelFormat.TRANSLUCENT);
 
         } else {
             params = new WindowManager.LayoutParams(
                     WindowManager.LayoutParams.MATCH_PARENT,
                     WindowManager.LayoutParams.MATCH_PARENT,
-                    WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                    PixelFormat.TRANSPARENT);
+                    WindowManager.LayoutParams.TYPE_PHONE,
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    PixelFormat.TRANSLUCENT);
         }
 
         params.x = x;
@@ -158,4 +158,5 @@ public class BubblesService extends Service {
             return BubblesService.this;
         }
     }
+
 }

@@ -6,7 +6,7 @@ import android.content.Context;
 import android.os.Vibrator;
 import android.util.AttributeSet;
 
-public class BubbleTrashLayout extends BubbleBaseLayout {
+class BubbleTrashLayout extends BubbleBaseLayout {
     public static final int VIBRATION_DURATION_IN_MS = 70;
     private boolean magnetismApplied = false;
     private boolean attachedToWindow = false;
@@ -61,7 +61,7 @@ public class BubbleTrashLayout extends BubbleBaseLayout {
 
     void vibrate() {
         if (!isVibrateInThisSession){
-            final Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+            final Vibrator vibrator = (Vibrator)getContext().getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(VIBRATION_DURATION_IN_MS);
             isVibrateInThisSession = true;
         }
@@ -84,3 +84,4 @@ public class BubbleTrashLayout extends BubbleBaseLayout {
         }
     }
 }
+

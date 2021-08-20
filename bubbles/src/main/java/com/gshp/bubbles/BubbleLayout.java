@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.WindowManager;
@@ -78,6 +79,7 @@ public class BubbleLayout extends BubbleBaseLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.e("TAG", String.valueOf(event.getAction()));
         if (event != null) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
@@ -89,7 +91,6 @@ public class BubbleLayout extends BubbleBaseLayout {
                     lastTouchDown = System.currentTimeMillis();
                     updateSize();
                     animator.stop();
-
                     break;
                 case MotionEvent.ACTION_MOVE:
                     int x = initialX + (int)(event.getRawX() - initialTouchX);
@@ -112,6 +113,7 @@ public class BubbleLayout extends BubbleBaseLayout {
                             onBubbleClickListener.onBubbleClick(this);
                         }
                     }
+
                     break;
             }
         }

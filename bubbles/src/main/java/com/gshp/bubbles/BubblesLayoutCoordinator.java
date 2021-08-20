@@ -1,9 +1,11 @@
 package com.gshp.bubbles;
 
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
 final class BubblesLayoutCoordinator {
+    private String TAG = BubblesLayoutCoordinator.class.getSimpleName();
     private static BubblesLayoutCoordinator INSTANCE;
     private BubbleTrashLayout trashView;
     private WindowManager windowManager;
@@ -19,6 +21,7 @@ final class BubblesLayoutCoordinator {
     private BubblesLayoutCoordinator() { }
 
     public void notifyBubblePositionChanged(BubbleLayout bubble, int x, int y) {
+        Log.e(TAG, "VALUES checkIfBubbleIsOverTrash:" + checkIfBubbleIsOverTrash(bubble));
         if (trashView != null) {
             trashView.setVisibility(View.VISIBLE);
             if (checkIfBubbleIsOverTrash(bubble)) {
@@ -58,7 +61,10 @@ final class BubblesLayoutCoordinator {
             int bubbleRight = bubbleLeft + bubbleWidth;
             int bubbleTop = bubble.getViewParams().y;
             int bubbleBottom = bubbleTop + bubbleHeight;
+            Log.e("TAG1", "bubbleLeft: "+ bubbleLeft + "trashLeft: "+trashLeft + "bubbleRight: " + bubbleRight + "trashRight: "+ trashRight);
             if (bubbleLeft >= trashLeft && bubbleRight <= trashRight) {
+                Log.e("TAG2", "bubbleTop: "+ bubbleTop + "trashTop: "+trashTop + "bubbleBottom: " + bubbleBottom + "trashBottom: "+ trashBottom);
+
                 if (bubbleTop >= trashTop && bubbleBottom <= trashBottom) {
                     result = true;
                 }

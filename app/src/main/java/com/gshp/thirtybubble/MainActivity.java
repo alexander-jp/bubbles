@@ -63,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
         mBadge.setNumber(88);
 
         bubbleView.setOnBubbleRemoveListener(bubble -> {
-            bubblesManager.removeBubble(bubbleView);
             Toast.makeText(MainActivity.this, "Removed", Toast.LENGTH_SHORT).show();
         });
 
         bubbleView.setOnBubbleClickListener(bubble -> {
+            bubblesManager.removeBubble(bubbleView);
             Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
         });
 
